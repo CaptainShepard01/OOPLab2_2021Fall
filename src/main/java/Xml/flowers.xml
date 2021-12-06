@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flowers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://www.example.com/flowers"
+         xsi:schemaLocation="http://www.example.com/flowers flowers.xsd">
+    <Flower soil="PODSOL" multiplying="LEAF">
+        <id>a</id>
+        <name>Troyanda</name>
+        <origin>Ukraine</origin>
+        <visual_parameters>
+            <stalk_color>GREEN</stalk_color>
+            <leaf_color>BLUE</leaf_color>
+            <average_size>MEDIUM</average_size>
+        </visual_parameters>
+        <growing_tips>
+            <temperature>12.5</temperature>
+            <lighting>true</lighting>
+            <irrigation>400.5</irrigation>
+        </growing_tips>
+    </Flower>
+    <Flower soil="GROUND" multiplying="SEMEN">
+        <id>b</id>
+        <name>Kvitka</name>
+        <origin>USA</origin>
+        <visual_parameters>
+            <stalk_color>GREEN</stalk_color>
+            <leaf_color>GREEN</leaf_color>
+            <average_size>MEDIUM</average_size>
+        </visual_parameters>
+        <growing_tips>
+            <temperature>18.3</temperature>
+            <lighting>false</lighting>
+            <irrigation>250.3</irrigation>
+        </growing_tips>
+    </Flower>
+</Flowers>

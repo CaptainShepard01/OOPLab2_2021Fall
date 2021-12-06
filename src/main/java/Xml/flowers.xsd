@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.example.com/flowers"
+        xmlns:tns="http://www.example.com/flowers"
+        elementFormDefault="qualified">
+    <element name="Flowers">
+        <complexType>
+            <sequence>
+                <element name="Flower" type="tns:Flower" minOccurs="1" maxOccurs="100"/>
+            </sequence>
+        </complexType>
+    </element>
+    <complexType name="Flower">
+        <sequence>
+            <element name="id" type="ID"/>
+            <element name="name" type="string"/>
+            <element name="origin" type="tns:Origin"/>
+            <element name="visual_parameters" type="tns:Visual_parameters"/>
+            <element name="growing_tips" type="tns:Growing_tips"/>
+        </sequence>
+        <attribute name="soil" use="optional" default="PODSOL">
+            <simpleType>
+                <restriction base="string">
+                    <enumeration value="PODSOL"></enumeration>
+                    <enumeration value="GROUND"></enumeration>
+                    <enumeration value="TURF_PODSOL"></enumeration>
+                </restriction>
+            </simpleType>
+        </attribute>
+        <attribute name="multiplying" use="required" default="LEAF">
+            <simpleType>
+                <restriction base="string">
+                    <enumeration value="LEAF"></enumeration>
+                    <enumeration value="STEM"></enumeration>
+                    <enumeration value="SEMEN"></enumeration>
+                </restriction>
+            </simpleType>
+        </attribute>
+    </complexType>
+    <complexType name="Visual_parameters">
+        <sequence>
+            <element name="stalk_color">
+                <simpleType>
+                    <restriction base="string">
+                        <enumeration value="RED"></enumeration>
+                        <enumeration value="GREEN"></enumeration>
+                        <enumeration value="YELLOW"></enumeration>
+                        <enumeration value="BLUE"></enumeration>
+                    </restriction>
+                </simpleType>
+            </element>
+            <element name="leaf_color">
+                <simpleType>
+                    <restriction base="string">
+                        <enumeration value="RED"></enumeration>
+                        <enumeration value="GREEN"></enumeration>
+                        <enumeration value="YELLOW"></enumeration>
+                        <enumeration value="BLUE"></enumeration>
+                    </restriction>
+                </simpleType>
+            </element>
+            <element name="average_size">
+                <simpleType>
+                    <restriction base="string">
+                        <enumeration value="BIG"></enumeration>
+                        <enumeration value="MEDIUM"></enumeration>
+                        <enumeration value="SMALL"></enumeration>
+                    </restriction>
+                </simpleType>
+            </element>
+        </sequence>
+    </complexType>
+    <complexType name="Growing_tips">
+        <sequence>
+            <element name="temperature" type="float"/>
+            <element name="lighting" type="boolean"/>
+            <element name="irrigation" type="float"/>
+        </sequence>
+    </complexType>
+    <simpleType name="Origin">
+        <restriction base="NCName">
+            <pattern value="[A-Z][a-zA-Z]{2,10}}"/>
+        </restriction>
+    </simpleType>
+</schema>
