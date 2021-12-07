@@ -11,8 +11,6 @@ import java.util.Set;
 import java.util.logging.Logger;
 
 public class FlowerTest {
-    private static final Logger log = Logger.getLogger(FlowerTest.class.getName());
-
     @Test
     public void singleFlowerTest() {
         String type = "stax";
