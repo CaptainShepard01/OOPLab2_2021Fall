@@ -8,9 +8,18 @@ import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Class to get set of Flowers.
+ */
 public class FlowerHandler extends DefaultHandler {
+    /**
+     * Set of flowers which were obtained from Xml.
+     */
     private Set<Flower> flowers;
     private Flower current;
+    /**
+     * Flower xml tag which we are at now.
+     */
     private FlowerXmlTag currentXmlTag;
     private EnumSet<FlowerXmlTag> withText;
     private static final String ELEMENT_FLOWER = "Flower";

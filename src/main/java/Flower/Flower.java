@@ -19,6 +19,8 @@ public class Flower implements Comparable<Flower>{
     /** Represents homeland of this flower.
      */
     private String origin;
+    /** All visual parameters of this flower.
+     */
     private VisualParameters visualParameters = new VisualParameters();
     /** How to grow and look after this flower.
      */
@@ -80,10 +82,18 @@ public class Flower implements Comparable<Flower>{
         return origin;
     }
 
+    /**
+     * Gets all visual parameters.
+     * @return A class representing flower's visual parameters.
+     */
     public VisualParameters getVisualParameters() {
         return visualParameters;
     }
 
+    /**
+     * Gets all growing tips.
+     * @return A class representing flower's growing tips.
+     */
     public GrowingTips getGrowingTips() {
         return growingTips;
     }
@@ -128,10 +138,18 @@ public class Flower implements Comparable<Flower>{
         this.origin = origin;
     }
 
+    /**
+     * Sets the Flower's all visual parameters.
+     * @param visualParameters A class containing all the flower's visual parameters.
+     */
     public void setVisualParameters(VisualParameters visualParameters) {
         this.visualParameters = visualParameters;
     }
 
+    /**
+     * Sets the Flower's all growing tips.
+     * @param growingTips A class containing all the flower's growing tips.
+     */
     public void setGrowingTips(GrowingTips growingTips) {
         this.growingTips = growingTips;
     }
@@ -181,6 +199,10 @@ public class Flower implements Comparable<Flower>{
             this.irrigation = irrigation;
         }
 
+        /**
+         * Gets flower's proper temperature.
+         * @return A float representing the most relevant temperature for the flower.
+         */
         public float getTemperature() {
             return temperature;
         }
@@ -193,6 +215,10 @@ public class Flower implements Comparable<Flower>{
             return lighting;
         }
 
+        /**
+         * Gets flower's irrigation amount.
+         * @return A float representing a proper amount of irrigation per week (in ml).
+         */
         public float getIrrigation() {
             return irrigation;
         }
@@ -205,6 +231,10 @@ public class Flower implements Comparable<Flower>{
             this.temperature = temperature;
         }
 
+        /**
+         * Sets flower's lighting preference.
+         * @param lighting A boolean representing whether flower does like the lighting or not.
+         */
         public void setLighting(boolean lighting) {
             this.lighting = lighting;
         }
@@ -270,6 +300,10 @@ public class Flower implements Comparable<Flower>{
             this.averageSize = averageSize;
         }
 
+        /**
+         * Gets the color of flower's stalk.
+         * @return An enum object representing flower's stalk color.
+         */
         public Color getStalkColor() {
             return stalkColor;
         }
@@ -306,6 +340,10 @@ public class Flower implements Comparable<Flower>{
             this.leafColor = leafColor;
         }
 
+        /**
+         * Sets Flower's average size.
+         * @param averageSize An enum object representing flower's average size.
+         */
         public void setAverageSize(Size averageSize) {
             this.averageSize = averageSize;
         }

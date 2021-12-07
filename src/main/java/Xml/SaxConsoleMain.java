@@ -9,6 +9,9 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.IOException;
 
+/**
+ * Class to test Sax parser functionality.
+ */
 public class SaxConsoleMain {
     public static void main(String[] args) {
         try {

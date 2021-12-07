@@ -10,11 +10,15 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
 public class FlowersDomBuilder extends FlowersSaxBuilder{
+    /**
+     * Set of flowers which were obtained from Xml.
+     */
     private Set<Flower> flowers;
     private DocumentBuilder docBuilder;
     public FlowersDomBuilder(){
@@ -32,6 +36,10 @@ public class FlowersDomBuilder extends FlowersSaxBuilder{
         return flowers;
     }
 
+    /**
+     * Method that builds the set based on the data from Xml document.
+     * @param filename Name of Xml file containing data.
+     */
     @Override
     public void buildSetFlowers(String filename) {
         Document doc;
@@ -50,6 +58,11 @@ public class FlowersDomBuilder extends FlowersSaxBuilder{
         }
     }
 
+    /**
+     * Method to build single Flower from data of Flower Element.
+     * @param flowerElement One of Flower elements.
+     * @return Flower object.
+     */
     private Flower buildFlower(Element flowerElement) {
         Flower flower = new Flower();
 
@@ -74,6 +87,12 @@ public class FlowersDomBuilder extends FlowersSaxBuilder{
         return flower;
     }
 
+    /**
+     *
+     * @param element Element form xml containing data.
+     * @param elementName Name of element.
+     * @return String which is a content od element.
+     */
     private static String getElementTextContent(Element element, String elementName) {
         NodeList nList = element.getElementsByTagName(elementName);
         Node node = nList.item(0);

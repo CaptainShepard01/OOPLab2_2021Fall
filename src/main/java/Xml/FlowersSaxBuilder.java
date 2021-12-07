@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.util.Set;
 
 public class FlowersSaxBuilder extends AbstractFlowersBuilder{
+    /**
+     * Set of flowers which were obtained from Xml.
+     */
     private Set<Flower> flowers;
     private FlowerHandler handler;
     private XMLReader reader;
@@ -29,10 +32,18 @@ public class FlowersSaxBuilder extends AbstractFlowersBuilder{
         reader.setContentHandler(handler);
     }
 
+    /**
+     * Method obtaining all the Flowers as Set.
+     * @return Set of Flowers.
+     */
     public Set<Flower> getFlowers() {
         return flowers;
     }
 
+    /**
+     * Method that builds the set based on the data from Xml document.
+     * @param filename Name of Xml file containing data.
+     */
     @Override
     public void buildSetFlowers(String filename) {
         try {

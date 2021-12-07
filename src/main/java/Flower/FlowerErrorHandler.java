@@ -6,6 +6,9 @@ import org.xml.sax.SAXParseException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Class to log all the errors and warnings from sax parser.
+ */
 public class FlowerErrorHandler implements ErrorHandler {
     private Logger logger = LogManager.getLogger();
     public void warning(SAXParseException e) {

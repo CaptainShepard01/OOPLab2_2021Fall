@@ -1,6 +1,12 @@
 package Xml;
 
+/**
+ * Actual factory for different builders.
+ */
 public class FlowerBuilderFactory {
+    /**
+     * Enum containing possible types of parser.
+     */
     private enum TypeParser {
         SAX, STAX, DOM
     }
@@ -8,6 +14,11 @@ public class FlowerBuilderFactory {
     private FlowerBuilderFactory() {
     }
 
+    /**
+     * Method creating actual builder determined by type.
+     * @param typeParser String represents type of parser to use.
+     * @return AbstractFlowersBuilder, abstract class.
+     */
     public static AbstractFlowersBuilder createFlowerBuilder(String typeParser) {
         TypeParser type = TypeParser.valueOf(typeParser.toUpperCase());
         switch (type) {

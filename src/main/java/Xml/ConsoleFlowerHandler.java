@@ -3,6 +3,9 @@ package Xml;
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
 
+/**
+ * Class to show xml data in console, for testing parsing process.
+ */
 public class ConsoleFlowerHandler extends DefaultHandler {
     @Override
     public void startDocument(){

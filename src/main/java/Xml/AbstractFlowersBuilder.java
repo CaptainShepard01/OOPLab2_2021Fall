@@ -5,8 +5,13 @@ import Flower.Flower;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Abstract class which uses Factory pattern to build set of data from Xml.
+ */
 public abstract class AbstractFlowersBuilder {
-    // protected - it is often accessed from a subclass
+    /**
+     * Set of Flowers.
+     */
     protected Set<Flower> flowers;
     public AbstractFlowersBuilder() {
         flowers = new HashSet<Flower>();

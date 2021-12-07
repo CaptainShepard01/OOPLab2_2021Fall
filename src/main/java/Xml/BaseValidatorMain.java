@@ -12,10 +12,19 @@ import javax.xml.validation.Validator;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Validator with main which determines whether xml valid or not (based on xsd schema).
+ */
 public class BaseValidatorMain {
     public static void main(String[] args) {
         String language = XMLConstants.W3C_XML_SCHEMA_NS_URI;
+        /*
+          Name of file with xml.
+         */
         String fileName = "data_xml/flowers.xml";
+        /*
+          Name of file with xsd schema.
+         */
         String schemaName = "data_xml/flowers.xsd";
         SchemaFactory factory = SchemaFactory.newInstance(language);
         File schemaLocation = new File(schemaName);

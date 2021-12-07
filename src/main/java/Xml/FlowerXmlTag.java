@@ -1,5 +1,9 @@
 package Xml;
 
+/**
+ * Class (enum) containing all possible tags and attributes
+ * from flowers.xml to match strings with constants.
+ */
 public enum FlowerXmlTag {
     FLOWERS("Flowers"),
     FLOWER("Flower"),
