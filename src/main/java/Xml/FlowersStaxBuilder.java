@@ -11,6 +11,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class FlowersStaxBuilder extends AbstractFlowersBuilder{
+    /**
+     * Set of flowers which were obtained from Xml.
+     */
     private Set<Flower> flowers;
     private XMLInputFactory inputFactory;
 
@@ -23,6 +26,10 @@ public class FlowersStaxBuilder extends AbstractFlowersBuilder{
         return flowers;
     }
 
+    /**
+     * Method that builds the set based on the data from Xml document.
+     * @param filename Name of Xml file containing data.
+     */
     @Override
     public void buildSetFlowers(String filename) {
         XMLStreamReader reader;
@@ -47,6 +54,12 @@ public class FlowersStaxBuilder extends AbstractFlowersBuilder{
         }
     }
 
+    /**
+     * Method to build single Flower from xml stream reader data.
+     * @param reader xml stream reader.
+     * @return Flower object.
+     * @throws XMLStreamException
+     */
     private Flower buildFlower(XMLStreamReader reader)
             throws XMLStreamException {
         Flower flower = new Flower();
@@ -77,6 +90,12 @@ public class FlowersStaxBuilder extends AbstractFlowersBuilder{
         throw new XMLStreamException("Unknown element in tag <flower>");
     }
 
+    /**
+     * Method to get visual parameters of single Flower.
+     * @param reader xml stream reader.
+     * @return Visual parameters of the Flower.
+     * @throws XMLStreamException
+     */
     private Flower.VisualParameters getXMLVisualParameters(XMLStreamReader reader)
             throws XMLStreamException {
         Flower flower = new Flower();
@@ -99,6 +118,12 @@ public class FlowersStaxBuilder extends AbstractFlowersBuilder{
         throw new XMLStreamException("Unknown element in tag <visual_parameters>");
     }
 
+    /**
+     * Method to get growing tips for a single Flower.
+     * @param reader xml stream reader.
+     * @return Growing tips for the Flower.
+     * @throws XMLStreamException
+     */
     private Flower.GrowingTips getXMLGrowingTips(XMLStreamReader reader)
             throws XMLStreamException {
         Flower flower = new Flower();
@@ -121,6 +146,12 @@ public class FlowersStaxBuilder extends AbstractFlowersBuilder{
         throw new XMLStreamException("Unknown element in tag <groving_tips>");
     }
 
+    /**
+     * Method to get xml text from xml stream reader.
+     * @param reader xml stream reader.
+     * @return String (xml text).
+     * @throws XMLStreamException
+     */
     private String getXMLText(XMLStreamReader reader) throws XMLStreamException {
         String text = null;
         if (reader.hasNext()) {
@@ -129,69 +160,4 @@ public class FlowersStaxBuilder extends AbstractFlowersBuilder{
         }
         return text;
     }
-
-    /*public void buildSetFlowers(String fileName) {
-        Flower.Flower flower = null;
-        XMLInputFactory inputFactory = XMLInputFactory.newInstance();
-        try {
-            XMLEventReader reader = inputFactory.createXMLEventReader(
-                    new FileInputStream(fileName));
-            while (reader.hasNext()) {
-                XMLEvent event = reader.nextEvent();
-                if (event.isStartElement()) {
-                    StartElement startElement = event.asStartElement();
-                    if (startElement.getName().getLocalPart().equals("flower")) {
-                        flower = new Flower.Flower();
-                        Attribute soil = startElement.getAttributeByName(new QName("soil"));
-                        if (soil != null) {
-                            flower.setSoil(Flower.Flower.Soil.valueOf(soil.getValue()));
-                        }
-
-                        Attribute multiplying = startElement.getAttributeByName(new QName("multiplying"));
-                        if (multiplying != null) {
-                            flower.setMultiplying(Flower.Flower.Multiplying.valueOf(multiplying.getValue()));
-                        }
-                    } else if (startElement.getName().getLocalPart().equals("visual_parameters")) {
-                        event = reader.nextEvent();
-                        StartElement startElement1 = event.asStartElement();
-                        if(startElement1.getName().getLocalPart().equals("stalk_color")){
-                            event = reader.nextEvent();
-                            flower.getVisualParameters().setStalkColor(Flower.Flower.VisualParameters.Color.valueOf(String.valueOf(event.asCharacters().getData())));
-                        }
-                        else if(startElement1.getName().getLocalPart().equals("leaf_color")){
-                            event = reader.nextEvent();
-                            flower.getVisualParameters().setLeafColor(Flower.Flower.VisualParameters.Color.valueOf(String.valueOf(event.asCharacters().getData())));
-                        }
-                        else if(startElement1.getName().getLocalPart().equals("average_size")){
-                            event = reader.nextEvent();
-                            flower.getVisualParameters().setAverageSize(Flower.Flower.VisualParameters.Size.valueOf(String.valueOf(event.asCharacters().getData())));
-                        }
-                    } else if (startElement.getName().getLocalPart().equals("growing_tips")) {
-                        event = reader.nextEvent();
-                        StartElement startElement1 = event.asStartElement();
-                        if(startElement1.getName().getLocalPart().equals("temperature")){
-                            event = reader.nextEvent();
-                            flower.getGrowingTips().setTemperature(Float.parseFloat(String.valueOf(event.asCharacters())));
-                        }
-                        else if(startElement1.getName().getLocalPart().equals("lighting")){
-                            event = reader.nextEvent();
-                            flower.getGrowingTips().setLighting(Boolean.parseBoolean(String.valueOf(event.asCharacters())));
-                        }
-                        else if(startElement1.getName().getLocalPart().equals("irrigation")){
-                            event = reader.nextEvent();
-                            flower.getGrowingTips().setIrrigation(Float.parseFloat(String.valueOf(event.asCharacters())));
-                        }
-                    }
-                }
-                if (event.isEndElement()) {
-                    EndElement endElement = event.asEndElement();
-                    if (endElement.getName().getLocalPart().equals("flower")) {
-                        flowers.add(flower);
-                    }
-                }
-            }
-        } catch (FileNotFoundException | XMLStreamException e) {
-            e.printStackTrace();
-        }
-    }*/
 }
