@@ -29,12 +29,9 @@ public class BaseValidatorMain {
         SchemaFactory factory = SchemaFactory.newInstance(language);
         File schemaLocation = new File(schemaName);
         try {
-            // schema creation
             Schema schema = factory.newSchema(schemaLocation);
-            // creating a schema-based validator
             Validator validator = schema.newValidator();
             Source source = new StreamSource(fileName);
-            // document check
             validator.setErrorHandler(new FlowerErrorHandler());
             validator.validate(source);
         } catch (SAXException | IOException e) {

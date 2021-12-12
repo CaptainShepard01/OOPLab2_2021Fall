@@ -47,9 +47,7 @@ public class FlowersStaxBuilder extends AbstractFlowersBuilder{
                     }
                 }
             }
-        } catch (XMLStreamException | FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (XMLStreamException | IOException e) {
             e.printStackTrace();
         }
     }

@@ -182,4 +182,35 @@ public class FlowerTest {
 
         Assert.assertEquals(expectedFlowers, anotherExpectedFlowers);
     }
+
+    @Test
+    public void testEquals(){
+        Flower flower = new Flower();
+        flower.setId("a");
+        flower.setName("Troyanda");
+        flower.setOrigin("Ukraine");
+        flower.setSoil(Flower.Soil.PODSOL);
+        flower.setMultiplying(Flower.Multiplying.LEAF);
+        flower.getVisualParameters().setAverageSize(Flower.VisualParameters.Size.MEDIUM);
+        flower.getVisualParameters().setLeafColor(Flower.VisualParameters.Color.BLUE);
+        flower.getVisualParameters().setStalkColor(Flower.VisualParameters.Color.GREEN);
+        flower.getGrowingTips().setIrrigation(Float.parseFloat("400.5"));
+        flower.getGrowingTips().setLighting(true);
+        flower.getGrowingTips().setTemperature(Float.parseFloat("12.5"));
+
+        Flower anotherFlower = new Flower();
+        anotherFlower.setId("a");
+        anotherFlower.setName("Troyanda");
+        anotherFlower.setOrigin("Ukraine");
+        anotherFlower.setSoil(Flower.Soil.PODSOL);
+        anotherFlower.setMultiplying(Flower.Multiplying.LEAF);
+        anotherFlower.getVisualParameters().setAverageSize(Flower.VisualParameters.Size.MEDIUM);
+        anotherFlower.getVisualParameters().setLeafColor(Flower.VisualParameters.Color.BLUE);
+        anotherFlower.getVisualParameters().setStalkColor(Flower.VisualParameters.Color.GREEN);
+        anotherFlower.getGrowingTips().setIrrigation(Float.parseFloat("400.5"));
+        anotherFlower.getGrowingTips().setLighting(true);
+        anotherFlower.getGrowingTips().setTemperature(Float.parseFloat("12.5"));
+
+        Assert.assertEquals(flower, anotherFlower);
+    }
 }

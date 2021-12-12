@@ -49,7 +49,7 @@ public class FlowersSaxBuilder extends AbstractFlowersBuilder{
         try {
             reader.parse(filename);
         } catch (IOException | SAXException e) {
-            e.printStackTrace(); // log
+            e.printStackTrace();
         }
         flowers = handler.getFlowers();
     }

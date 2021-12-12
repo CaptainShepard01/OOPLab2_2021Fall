@@ -28,7 +28,7 @@ public class FlowersDomBuilder extends FlowersSaxBuilder{
         try {
             docBuilder = factory.newDocumentBuilder();
         } catch (ParserConfigurationException e) {
-            e.printStackTrace(); // log
+            e.printStackTrace();
         }
     }
 
@@ -54,7 +54,7 @@ public class FlowersDomBuilder extends FlowersSaxBuilder{
                 flowers.add(flower);
             }
         } catch (IOException | SAXException e) {
-            e.printStackTrace(); // log
+            e.printStackTrace();
         }
     }
 
@@ -64,36 +64,16 @@ public class FlowersDomBuilder extends FlowersSaxBuilder{
      * @return Flower object.
      */
     private Flower buildFlower(Element flowerElement) {
-        Flower flower = new Flower();
-
-        flower.setSoil(Flower.Soil.valueOf(flowerElement.getAttribute("soil")));
-        flower.setMultiplying(Flower.Multiplying.valueOf(flowerElement.getAttribute("multiplying")));
-        flower.setId(getElementTextContent(flowerElement, "id"));
-        flower.setName(getElementTextContent(flowerElement, "name"));
-        flower.setOrigin(getElementTextContent(flowerElement, "origin"));
-        Flower.VisualParameters visualParameters = flower.getVisualParameters();
-
-        Element visualParametersElement =
-                (Element) flowerElement.getElementsByTagName("visual_parameters").item(0);
-        visualParameters.setStalkColor(Flower.VisualParameters.Color.valueOf(getElementTextContent(visualParametersElement, "stalk_color")));
-        visualParameters.setLeafColor(Flower.VisualParameters.Color.valueOf(getElementTextContent(visualParametersElement, "leaf_color")));
-        visualParameters.setAverageSize(Flower.VisualParameters.Size.valueOf(getElementTextContent(visualParametersElement, "average_size")));
-
-        Flower.GrowingTips growingTips = flower.getGrowingTips();
-        Element growingTipsElement = (Element) flowerElement.getElementsByTagName("growing_tips").item(0);
-        growingTips.setTemperature(Float.parseFloat(getElementTextContent(growingTipsElement, "temperature")));
-        growingTips.setIrrigation(Float.parseFloat(getElementTextContent(growingTipsElement, "irrigation")));
-        growingTips.setLighting(Boolean.parseBoolean(getElementTextContent(growingTipsElement, "lighting")));
-        return flower;
+        return new Flower(flowerElement);
     }
 
     /**
      *
      * @param element Element form xml containing data.
      * @param elementName Name of element.
-     * @return String which is a content od element.
+     * @return String which is a content of element.
      */
-    private static String getElementTextContent(Element element, String elementName) {
+    public static String getElementTextContent(Element element, String elementName) {
         NodeList nList = element.getElementsByTagName(elementName);
         Node node = nList.item(0);
         String text = node.getTextContent();

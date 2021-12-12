@@ -1,10 +1,18 @@
 package Flower;
 
 import Xml.FlowerXmlTag;
+import org.w3c.dom.Element;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import java.util.Comparator;
 import java.util.Objects;
 import java.util.concurrent.Flow;
+
+import static Xml.FlowersDomBuilder.getElementTextContent;
 
 /** Represents a Flower.
  * @author Anton Balykov
@@ -449,5 +457,24 @@ public class Flower implements Comparable<Flower>{
                 default -> throw new EnumConstantNotPresentException(currentXmlTag.getDeclaringClass(), currentXmlTag.name());
             }
         }
+    }
+
+    public Flower(Element flowerElement){
+        this.soil = Soil.valueOf(flowerElement.getAttribute("soil"));
+        this.multiplying = Multiplying.valueOf(flowerElement.getAttribute("multiplying"));
+        this.id = getElementTextContent(flowerElement, "id");
+        this.name = getElementTextContent(flowerElement, "name");
+        this.origin = getElementTextContent(flowerElement, "origin");
+
+        Element visualParametersElement =
+                (Element) flowerElement.getElementsByTagName("visual_parameters").item(0);
+        this.visualParameters.stalkColor = VisualParameters.Color.valueOf(getElementTextContent(visualParametersElement, "stalk_color"));
+        this.visualParameters.leafColor = VisualParameters.Color.valueOf(getElementTextContent(visualParametersElement, "leaf_color"));
+        this.visualParameters.averageSize = VisualParameters.Size.valueOf(getElementTextContent(visualParametersElement, "average_size"));
+
+        Element growingTipsElement = (Element) flowerElement.getElementsByTagName("growing_tips").item(0);
+        this.growingTips.temperature = Float.parseFloat(getElementTextContent(growingTipsElement, "temperature"));
+        this.growingTips.irrigation = Float.parseFloat(getElementTextContent(growingTipsElement, "irrigation"));
+        this.growingTips.lighting = Boolean.parseBoolean(getElementTextContent(growingTipsElement, "lighting"));
     }
 }
