@@ -25,11 +25,11 @@ public class FlowersSaxBuilder extends AbstractFlowersBuilder{
         try {
             SAXParser saxParser = factory.newSAXParser();
             reader = saxParser.getXMLReader();
+            reader.setErrorHandler(new FlowerErrorHandler());
+            reader.setContentHandler(handler);
         } catch (ParserConfigurationException | SAXException e) {
             e.printStackTrace(); // log
         }
-        reader.setErrorHandler(new FlowerErrorHandler());
-        reader.setContentHandler(handler);
     }
 
     /**
@@ -48,9 +48,9 @@ public class FlowersSaxBuilder extends AbstractFlowersBuilder{
     public void buildSetFlowers(String filename) {
         try {
             reader.parse(filename);
+            flowers = handler.getFlowers();
         } catch (IOException | SAXException e) {
             e.printStackTrace();
         }
-        flowers = handler.getFlowers();
     }
 }

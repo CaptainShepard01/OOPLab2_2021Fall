@@ -2,15 +2,17 @@ package Xml;
 
 import Flower.Flower;
 
-import javax.xml.stream.*;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamConstants;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
-public class FlowersStaxBuilder extends AbstractFlowersBuilder{
+public class FlowersStaxBuilder extends AbstractFlowersBuilder {
     /**
      * Set of flowers which were obtained from Xml.
      */
@@ -28,6 +30,7 @@ public class FlowersStaxBuilder extends AbstractFlowersBuilder{
 
     /**
      * Method that builds the set based on the data from Xml document.
+     *
      * @param filename Name of Xml file containing data.
      */
     @Override
@@ -54,6 +57,7 @@ public class FlowersStaxBuilder extends AbstractFlowersBuilder{
 
     /**
      * Method to build single Flower from xml stream reader data.
+     *
      * @param reader xml stream reader.
      * @return Flower object.
      * @throws XMLStreamException
@@ -90,6 +94,7 @@ public class FlowersStaxBuilder extends AbstractFlowersBuilder{
 
     /**
      * Method to get visual parameters of single Flower.
+     *
      * @param reader xml stream reader.
      * @return Visual parameters of the Flower.
      * @throws XMLStreamException
@@ -118,6 +123,7 @@ public class FlowersStaxBuilder extends AbstractFlowersBuilder{
 
     /**
      * Method to get growing tips for a single Flower.
+     *
      * @param reader xml stream reader.
      * @return Growing tips for the Flower.
      * @throws XMLStreamException
@@ -146,6 +152,7 @@ public class FlowersStaxBuilder extends AbstractFlowersBuilder{
 
     /**
      * Method to get xml text from xml stream reader.
+     *
      * @param reader xml stream reader.
      * @return String (xml text).
      * @throws XMLStreamException
